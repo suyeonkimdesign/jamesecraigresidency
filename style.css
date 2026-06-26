@@ -1,0 +1,161 @@
+/* ========================================================
+   1. VARIABLE ROOTS & PRESENTATION FRAMEWORKS
+   ======================================================== */
+
+:root {
+    --panel-peek: 8vh; /* Controls how much of the panels peek up on load */
+}
+
+@font-face {
+    font-family: 'Akzidenz-Grotesk Next';
+    src: local('Akzidenz-Grotesk Next Regular'), local('Akzidenz-Grotesk-Next-Regular');
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Akzidenz-Grotesk Next', Helvetica, Arial, sans-serif;
+    background-color: #000;
+    
+    /* Perfect Bidirectional Scroll-Snapping Configuration */
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: auto; 
+}
+
+
+
+/* ========================================================
+   3. STICKY HERO & SIGNATURE LAYERS
+   ======================================================== */
+
+.landing-hero-container {
+    position: relative;
+    width: 100%;
+    /* ⚠️ CRITICAL: This 100vh height pushes the panels to the bottom of the screen */
+    height: 100vh; 
+    scroll-snap-align: start; 
+    z-index: 1;
+}
+
+.background {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url('Residency.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+}
+
+#homepage-signature-wrapper {
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none; 
+    
+    /* Forces it to load on top of the green screen */
+    z-index: 5; 
+}
+
+#signature-gif {
+    width: 100%;
+    max-width: 1000px; 
+    height: auto;
+    display: block;
+}
+
+/* ========================================================
+   4. BUG-FREE SCROLL DRAWERS (NO TRANSFORMS)
+   ======================================================== */
+
+.scrolling-panels-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; 
+    display: flex;
+    z-index: 10; 
+    scroll-snap-align: start; /* Flawless bottom snapping anchor */
+    
+    /* Native, safe layout overlap. Completely removes the transform physics glitch! */
+    margin-top: calc(-1 * var(--panel-peek)); 
+}
+
+/* The individual panels handle their own sizing and hover animations safely */
+.scroll-panel {
+    position: relative;
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-decoration: none; 
+    cursor: pointer;
+    box-shadow: none;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.panel-about { background-color: #5A602B; }
+.panel-apply { background-color: #96AF3E; }
+
+.panel-title-png {
+    position: relative;
+    z-index: 15; 
+    max-width: 40%; 
+    height: auto;
+    pointer-events: none;
+}
+
+/* Slightly lifts panels upward to prompt interaction ONLY when peeking from the bottom */
+body:not(.panels-in-view) .scroll-panel:hover {
+    transform: translateY(-20px);
+}
+
+/* ========================================================
+   5. CONDITIONED IMAGE HOVER REVEALS
+   ======================================================== */
+
+.panel-hover-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 10;
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out;
+}
+
+.panel-hover-house { background-image: url('House.jpeg'); }
+.panel-hover-lake { background-image: url('Lake.jpeg'); }
+
+/* Apply 60% color tint filter mask over the images */
+.panel-hover-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #5A602B; 
+    opacity: 0.60; 
+    z-index: 11;
+}
+
+/* Image reveal triggers run flawlessly ONLY once the panels-in-view class is active */
+body.panels-in-view .scroll-panel:hover .panel-hover-bg {
+    opacity: 1;
+}

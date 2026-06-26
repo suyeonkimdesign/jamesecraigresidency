@@ -1,0 +1,379 @@
+/* ========================================================
+   1. GLOBAL FOUNDATIONS & TYPOGRAPHY
+   ======================================================== */
+
+/* Defines the Regular Weight (400) */
+@font-face {
+    font-family: 'Akzidenz-Grotesk Next';
+    src: url('AkzidGrtskNext-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Defines the Bold Weight (700) */
+@font-face {
+    font-family: 'Akzidenz-Grotesk Next';
+    src: url('AkzidGrtskNext-Med.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Akzidenz-Grotesk Next', Helvetica, Arial, sans-serif;
+    font-weight: 400; 
+    background-color: #ffffff;
+    color: #5A602B; 
+    font-size: 1em; 
+    letter-spacing: 0.05em;
+}
+
+h1, h2, h3, h4, p {
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Enforces maximum width of 1/3 viewport for all paragraph text */
+p {
+    max-width: 40vw;
+    line-height: 1.35;
+}
+
+/* Universal Subheads Settings */
+
+.grid-headline,
+.detail-block h4 {
+    font-size: 1em;
+    font-weight: 700; 
+    text-transform: uppercase; 
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.page-directories a {
+    color: #ffffff;
+    transition: opacity 0.3s ease;
+    display: flex;       
+    align-items: center; 
+    text-transform: uppercase; 
+    text-decoration: none;
+}
+
+.directory-arrow {
+    height: 1em;       /* 👈 Increased arrow size */
+    margin-right: 15px;  
+    width: auto;
+}
+
+/* ========================================================
+   2. HERO SECTION
+   ======================================================== */
+
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    
+    /* Applies a 30% solid color mask (rgba 90, 96, 43 is the #5A602B green) 
+       directly over the background image natively! 
+    */
+    background-image: linear-gradient(rgba(90, 96, 43, 0.3), rgba(90, 96, 43, 0.3)), url('House.jpeg');
+    
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-title {
+    position: absolute;
+    top: 50%;
+    left: 4.5em; 
+    transform: translateY(-50%);
+    max-width: 400px;
+    width: 40vw; 
+    height: auto;
+}
+
+/* ========================================================
+   3. STRUCTURAL PADDING & SECTION TITLES
+   ======================================================== */
+
+.section-content {
+    padding-left: 4.5em; /* 👈 Updated to 4.5em */
+    padding-right: 4.5em; /* 👈 Updated to 4.5em */
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Global Title Settings */
+.section-title-img {
+    display: block;
+    margin-bottom: 50px;
+    width: auto;
+}
+
+/* 👉 TITLE SIZING AND ALIGNMENT CONTROLS
+   - Change the `height` pixel value to make the images larger or smaller.
+   - To align LEFT:   margin-left: 0; margin-right: auto;
+   - To align RIGHT:  margin-left: auto; margin-right: 0;
+   - To align CENTER: margin-left: auto; margin-right: auto;
+*/
+
+#the-estate .section-title-img {
+    height: 65px; /* Match this number with the schedule title to keep them identical */
+    margin-left: 0;
+    margin-right: auto;
+}
+
+#program-schedule .section-title-img {
+    height: 80px; /* Match this number with the estate title to keep them identical */
+    margin-left: 0;
+    margin-right: auto;
+}
+
+
+
+/* ========================================================
+   4. INTRO BLOCK (#5A602B RECTANGLE)
+   ======================================================== */
+
+.intro-block {
+    background-color: #5A602B;
+    padding: 4.5em 0; /* 👈 Updated Top & Bottom Padding to 4.5em */
+}
+
+.intro-block p, 
+.page-directories a {
+    color: #ffffff;
+}
+
+.intro-block p {
+    margin-bottom: 40px;
+}
+
+.page-directories {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.page-directories a {
+    transition: opacity 0.3s ease;
+}
+
+.page-directories a:hover {
+    opacity: 0.7;
+}
+
+/* ========================================================
+   5. GENERAL SECTIONS
+   ======================================================== */
+
+.content-section {
+    padding: 100px 0; 
+}
+
+.section-description {
+    margin-bottom: 60px;
+}
+
+/* ========================================================
+   6. THE ESTATE GRID & HOVER EFFECTS
+   ======================================================== */
+
+.estate-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    width: 100%;
+}
+
+.grid-item {
+    position: relative;
+    aspect-ratio: 4 / 3; 
+    overflow: hidden;
+    cursor: default;
+}
+
+.grid-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tint-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #5A602B;
+    opacity: 0.30;
+    z-index: 5;
+    transition: opacity 0.4s ease;
+}
+
+.grid-headline {
+    position: absolute;
+    top: 4.5em; /* 👈 Updated to 4.5em */
+    left: 4.5em; /* 👈 Updated to 4.5em */
+    color: #ffffff;
+    z-index: 10;
+}
+
+.grid-hover-text {
+    position: absolute;
+    bottom: 4.5em; /* 👈 Updated to 4.5em */
+    left: 4.5em; /* 👈 Updated to 4.5em */
+    right: 4.5em; /* 👈 Updated to 4.5em */
+    color: #ffffff;
+    z-index: 10;
+    opacity: 0; 
+    transform: translateY(10px);
+    transition: all 0.4s ease;
+}
+
+.grid-item:hover .tint-overlay {
+    opacity: 0.8; 
+}
+
+.grid-item:hover .grid-hover-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .estate-grid {
+        grid-template-columns: 1fr;
+    }
+    p {
+        max-width: 90vw; 
+    }
+}
+
+/* ========================================================
+   7. PROGRAM SCHEDULE
+   ======================================================== */
+
+.schedule-details {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.detail-block h4 {
+    color: #5A602B;
+    margin-bottom: 5px;
+}
+
+/* ========================================================
+   8. MAILING LIST FOOTER
+   ======================================================== */
+
+.mailing-list-section {
+    background-color: #5A602B; /* Spans the full viewport width */
+    padding: 4.5em 0; /* Vertical padding to give the box breathing room */
+    padding-top: 100px;
+    padding-bottom: 100px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mailing-list-section p {
+    color: #ffffff; /* Inverts text to white for contrast */
+    margin-bottom: 30px;
+}
+
+.email-form {
+    display: flex;
+    max-width: calc(33.33vw + 40px); 
+    border-bottom: 1px solid #ffffff; /* Changes the form line to white */
+    padding-bottom: 5px;
+}
+
+.email-form input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 1em;
+    color: #ffffff; /* Typed text becomes white */
+}
+
+.email-form input::placeholder {
+    color: #ffffff;
+    opacity: 0.7; /* Fades the placeholder text slightly */
+}
+
+.email-form button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24pt;
+    color: #ffffff; /* Arrow turns white */
+    padding: 0 10px;
+    transition: transform 0.2s ease;
+}
+
+.email-form button:hover {
+    transform: translateX(5px);
+}
+
+
+/* ========================================================
+   MOBILE RESPONSIVE TEXT LAYOUT
+   ======================================================== */
+
+@media (max-width: 1400px) {
+    p {
+        /* Releases the 1/3 viewport constraint and lets text span end-to-end 
+           while still respecting your section padding */
+        max-width: 50%; 
+    }
+    
+    /* Optional: You can also shrink the 4.5em side padding slightly on mobile 
+       to give the text more reading room on small phone screens */
+    .section-content {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+}
+
+@media (max-width: 1000px) {
+    p {
+        /* Releases the 1/3 viewport constraint and lets text span end-to-end 
+           while still respecting your section padding */
+        max-width: 80%; 
+    }
+    
+    /* Optional: You can also shrink the 4.5em side padding slightly on mobile 
+       to give the text more reading room on small phone screens */
+    .section-content {
+        padding-left: 3em;
+        padding-right: 3em;
+    }
+}
+
+@media (max-width: 768px) {
+    p {
+        /* Releases the 1/3 viewport constraint and lets text span end-to-end 
+           while still respecting your section padding */
+        max-width: 90%; 
+    }
+    
+    /* Optional: You can also shrink the 4.5em side padding slightly on mobile 
+       to give the text more reading room on small phone screens */
+    .section-content {
+        padding-left: 3em;
+        padding-right: 3em;
+    }
+}
