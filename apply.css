@@ -134,7 +134,7 @@ p {
 }
 
 .directory-arrow {
-    height: 1.5em;       /* Increased arrow size to match requirements */
+    height: 1em;       /* Increased arrow size to match requirements */
     margin-right: 15px;  
     width: auto;
 }
@@ -332,20 +332,20 @@ p {
     outline: none;
     background: transparent;
     font-family: inherit;
-    font-size: 1.1em;
-    color: #5A602B;
+    font-size: 1em;
+    color: #5A602B; /* Typed text becomes white */
 }
 
 .email-form input::placeholder {
     color: #5A602B;
-    opacity: 0.7;
+    opacity: 0.7; /* Fades the placeholder text slightly */
 }
 
 .email-form button {
     background: transparent;
     border: none;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 24pt;
     color: #5A602B;
     padding: 0 10px;
     transition: transform 0.2s ease;
@@ -354,6 +354,13 @@ p {
 .email-form button:hover {
     transform: translateX(5px);
 }
+
+.submit-arrow {
+    height: 0.5em; /* Adjusts the arrow size */
+    width: auto;
+}
+
+
 
 /* ========================================================
    MOBILE RESPONSIVE TEXT LAYOUT

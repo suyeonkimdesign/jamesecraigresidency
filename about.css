@@ -328,6 +328,11 @@ p {
     transform: translateX(5px);
 }
 
+.submit-arrow {
+    height: 0.5em; /* Adjusts the arrow size */
+    width: auto;
+}
+
 
 /* ========================================================
    MOBILE RESPONSIVE TEXT LAYOUT

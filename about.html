@@ -90,14 +90,21 @@
         </div>
     </section>
 
-    <!-- 5. Mailing List Footer -->
     <footer class="mailing-list-section">
         <div class="section-content">
             <p>To stay informed when applications open, sign up for our mailing list below.</p>
-            <form class="email-form" action="#" method="POST">
-                <input type="email" placeholder="Email Address" required>
-                <button type="submit">→</button>
-            </form>
+            
+            <script type="text/javascript">var emailSubmitted=false;</script>
+            <iframe name="hidden_email_iframe" id="hidden_email_iframe" style="display:none;" onload="if(emailSubmitted) { document.getElementById('email-form-container').style.display='none'; document.getElementById('email-success').style.display='block'; }"></iframe>
+            
+            <div id="email-form-container">
+                <form class="email-form" action="https://docs.google.com/forms/d/e/1FAIpQLScnur8PYZtjRrBvVxVtmX0u78Y69ZviyAXYiWs5RPyd1r4ZiQ/formResponse" method="POST" target="hidden_email_iframe" onsubmit="emailSubmitted=true;">
+                    <input type="email" name="entry.327840562" placeholder="Email Address" required>
+                    <button type="submit"><img src="Arrow.png" alt="Submit" class="submit-arrow"></button>
+                </form>
+            </div>
+
+            <p id="email-success" style="display: none; color: #ffffff; font-weight: bold; margin-top: 15px;">Thank you for subscribing.</p>
         </div>
     </footer>
 
