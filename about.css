@@ -73,6 +73,37 @@ p {
 }
 
 /* ========================================================
+   GLOBAL LOGO
+   ======================================================== */
+
+.global-logo {
+    position: absolute; /* Keeps the logo fixed to the top corner while scrolling */
+    top: 3.5rem; /* Distance from the top of the screen */
+    right: 3.5em; /* Perfectly aligns with your text/titles padding */
+    z-index: 5; /* Ensures it stays above all images, panels, and tints */
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+/* Adds a subtle fade effect when the user hovers over the logo */
+.global-logo:hover {
+    opacity: 0.7;
+}
+
+.global-logo img {
+    width: 15em; /* 👉 Adjust this number to make your logo larger or smaller */
+    height: auto;
+    display: block;
+}
+
+/* Mobile responsive adjustment for smaller screens */
+@media (max-width: 768px) {
+    .global-logo {
+        right: 20px; /* Pulls the logo inward on phone screens */
+        top: 20px;
+    }
+}
+/* ========================================================
    2. HERO SECTION
    ======================================================== */
 
